@@ -11,9 +11,14 @@ const int buttonWave = 2;
 const int buttonTefi = 3;
 const int buttonNature = 4;
 
+//LED pins
+const int ledPinBoat = 13;   
+const int ledPinCliff = 14;   
+
 // LED buttons & corresponding pins
 const int buttonBoat = 5;
 const int buttonCliff = 6;
+
 
 void setup() {
   // left wave & corresponding pins
@@ -28,6 +33,10 @@ natureServo.attach(12);
 pinMode(buttonWave, INPUT);
 pinMode(buttonTefi, INPUT);
 pinMode(buttonNature, INPUT);
+//LED Buttons
+pinMode(buttonBoat, INPUT);
+pinMode(buttonCliff, INPUT);
+
 }
 
 void loop() {
@@ -51,4 +60,23 @@ void loop() {
      } else {
       natureServo.write(0);
      }
+
+  //Boat LED
+  if  (digitalRead(buttonBoat) == HIGH) {
+      digitalWrite(ledPinBoat, HIGH);
+      } else {
+      digitalWrite(ledPinBoat, LOW);
+     }
+
+    //CLiff LED
+  if  (digitalRead(buttonCliff) == HIGH) {
+      digitalWrite(ledPinCliff, HIGH);
+      } else {
+      digitalWrite(ledPinCliff, LOW);
+     }
+
+
+
+
+
   }
