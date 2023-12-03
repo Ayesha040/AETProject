@@ -1,3 +1,13 @@
+/* Moana: Once Upon an Arduino
+
+Team: Once Upon a Team
+Team Members: Chisara Ogbuehi & Ayesha Faheem
+
+Description: In this program we spin servos 180 degrees and turn on lights 
+when buttons are pressed in order to tell the story of Disney's Moana
+
+*/
+
 #include <Servo.h>
 
 // Servo names
@@ -6,28 +16,28 @@ Servo rightServo;
 Servo tefiServo;
 Servo natureServo;
 
-// Servo buttons & corresponding pins
+// Servo button names & corresponding pins
 const int buttonWave = 2;
 const int buttonTefi = 8;
 const int buttonNature = 4;
 
-//LED pins
-const int ledPinBoat = 13;   
-const int ledPinCliff = 7;   
+//LED names & corresponding pins
+const int ledPinBoat = 13;   //blue button
+const int ledPinCliff = 7;   // green button
 
-// LED buttons & corresponding pins
+// LED button names & corresponding pins
 const int buttonBoat = 5;
 const int buttonCliff = 6;
 
-
+// Setting up servo, buttons, and LEDs
 void setup() {
-  // left wave & corresponding pins
+  // Turns left wave & corresponding pins
 leftServo.attach(9);
-// right wave & corresponding pins
+// Turns right wave & corresponding pins
 rightServo.attach(10);
 // Turns Te Fiti & corresponding pins
 tefiServo.attach(11);
-// Turns nature scene & corresponding pins
+// Lifts nature scene & corresponding pins
 natureServo.attach(12);
 // Servo buttons
 pinMode(buttonWave, INPUT);
@@ -36,16 +46,17 @@ pinMode(buttonNature, INPUT);
 //LED Buttons
 pinMode(buttonBoat, INPUT);
 pinMode(buttonCliff, INPUT);
-// LED
+// LEDs
 pinMode(ledPinBoat, OUTPUT);
 pinMode(ledPinCliff, OUTPUT);
+// Starting point for servos and LEDs
 natureServo.write(0);
 tefiServo.write(0);
 digitalWrite(ledPinBoat, HIGH);
 digitalWrite(ledPinCliff, HIGH);
-
 }
 
+//Program servos and LEDs with corresponding buttons
 void loop() {
  // waves turns
   if  (digitalRead(buttonWave) == HIGH) {
@@ -63,20 +74,14 @@ void loop() {
     Serial.println("button on");
       natureServo.write(180);
      }
-
   //Boat LED
   if  (digitalRead(buttonBoat) == HIGH) {
     Serial.println("button on");
       digitalWrite(ledPinBoat, LOW);
      }
-
     //CLiff LED
   if  (digitalRead(buttonCliff) == HIGH) {
     Serial.println("button on");
       digitalWrite(ledPinCliff, LOW);
      }
-
-
-
-
   }
