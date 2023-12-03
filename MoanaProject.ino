@@ -39,6 +39,10 @@ pinMode(buttonCliff, INPUT);
 // LED
 pinMode(ledPinBoat, OUTPUT);
 pinMode(ledPinCliff, OUTPUT);
+natureServo.write(0);
+tefiServo.write(0);
+digitalWrite(ledPinBoat, HIGH);
+digitalWrite(ledPinCliff, HIGH);
 
 }
 
@@ -48,46 +52,29 @@ void loop() {
     Serial.println("button on");
       leftServo.write(180);
       rightServo.write(0);
-    } else {
-      leftServo.write(0);
-      rightServo.write(180);
-      Serial.println("button off");
     }
   // Te Fiti turns
   if  (digitalRead(buttonTefi) == HIGH) {
     Serial.println("button on");
       tefiServo.write(180);
-    } else {
-      tefiServo.write(0);
-      Serial.println("button off");
     }
   // Nature scene turns
   if  (digitalRead(buttonNature) == HIGH) {
     Serial.println("button on");
       natureServo.write(180);
-     } else {
-      natureServo.write(0);
-      Serial.println("button off");
      }
 
   //Boat LED
   if  (digitalRead(buttonBoat) == HIGH) {
     Serial.println("button on");
       digitalWrite(ledPinBoat, LOW);
-      } else {
-      digitalWrite(ledPinBoat, HIGH);
-      Serial.println("button off");
      }
 
     //CLiff LED
   if  (digitalRead(buttonCliff) == HIGH) {
     Serial.println("button on");
       digitalWrite(ledPinCliff, LOW);
-      } else {
-      digitalWrite(ledPinCliff, HIGH);
-      Serial.println("button off");
      }
-
 
 
 
